@@ -112,7 +112,7 @@
   100%{opacity:0; left:-150%;}
 }
 
-/*======================= media queries =======================*/
+/*======================= media queries for animations =======================*/
 
 @media screen and (min-width: 64em){
   
@@ -155,6 +155,17 @@ body{
 }
 ul{
   list-style-type: none;
+}
+header{
+  background-color:white;
+  height:35px;
+  line-height:35px;
+  padding: 0 30px;
+}
+header a{
+  text-decoration:none;
+  color: inherit;
+  font-size:20px;
 }
 .demo-wrapper{
   background:url("../images/1.png");
