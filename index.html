@@ -3,128 +3,98 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Windows 8 Animations</title>
+  <title>Demo - How to Create Windows-8-like Animations with CSS3 and jQuery</title>
 
   <link rel="stylesheet" href="css/demo-styles.css" />
+  <script src="js/modernizr-1.5.min.js"></script>
 
 </head>
 
 <body>
  <header>
-   <a href="http://blog.sarasoueidan.com/windows8-animations/" class="tutorial-link">Read Tutorial: How to Create Windows-8-like Animations with CSS3 and jQuery</a>
+   <a href="http://blog.sarasoueidan.com/windows8-animations/" class="tutorial-link">Read Tutorial</a>
  </header>
   <!--===============================Start Demo====================================================-->
 <div class="demo-wrapper">
-  <div class="login-screen">
-    <p>Log In</p>
-    <div class="myform">
-      <input type="text" placeholder="Password" />
-      <button data-icon="&#xe00c;" id="unlock-button"></button>
-    </div>
+<!-- classnames for the pages should include: 1) type of page 2) page name-->
+  <div class="s-page random-restored-page">
+    <h2 class="page-title">Some minimized App</h2>
+    <div class="s-close-button">x</div>
   </div>
-  <div class="page todos">
-    <h2 class="page-title">My Todos</h2>
-    <ul contenteditable>
-      <li>Finish my 3D demo<span class="delete-button">x</span></li>
-      <li>Design my blog<span class="delete-button">x</span></li>
-      <li>Buy groceries<span class="delete-button">x</span></li>
-      <li>Finish my todo app<span class="delete-button">x</span></li>
-      <li>Organize my bookmarks<span class="delete-button">x</span></li>
-    </ul>
-    <div class="close-button">x</div>
+  <div class="s-page custom-page">
+    <h2 class="page-title">Thank You!</h2>
+    <div class="s-close-button">x</div>
   </div>
-  
-  <div class="page random-page">
-    <h2 class="page-title">Some Awesome App!</h2>
-    <div class="close-button">x</div>
+  <div class="r-page random-r-page">
+    <h2 class="page-title">App Screen</h2>
+    <div class="r-close-button">x</div>
   </div>
-
+<!--each tile should specify what page type it opens (to determine which animation) and the corresponding page name it should open-->
   <div class="dashboard clearfix">
+    <ul class="tiles">
       <div class="col1 clearfix">
-        <div class="big todos-thumb" data-page="todos">
-          <p>My Todos
-            <span class="todos-thumb-span">You have 5 more tasks to do!</span>
-          </p>
-        </div>
-        <div class="small lock-thumb">
-          <span class="icon-font  center" aria-hidden="true" data-icon="&#xe00d;"></span>
-        </div>
-        <div class="small last cpanel-thumb" data-page="random-page">
-          <span class="icon-font" aria-hidden="true" data-icon="&#xe016;"></span>
-        </div>
-        <div class="big notes-thumb" data-page="random-page">
-          <span class="icon-font" aria-hidden="true" data-icon="&#xe000;"></span>
-          <p> Notes</p>
-        </div>
-        <div class="big calculator-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe017;"></span><p>Calculator</p></div>
+        <li class="tile tile-big tile-1 slideTextUp" data-page-type="r-page" data-page-name="random-r-page">
+          <div><p>This tile's content slides up</p></div>
+          <div><p>View all tasks</p></div>
+        </li>
+        <li class="tile tile-small tile tile-2 slideTextRight" data-page-type="s-page" data-page-name ="random-restored-page">
+          <div><p class="icon-arrow-right"></p></div>
+          <div><p>Tile's content slides right. Page opens from left</p></div>
+        </li>
+        <li class="tile tile-small last tile-3" data-page-type="r-page" data-page-name="random-r-page">
+          <p class="icon-calendar-alt-fill"></p>
+        </li>
+        <li class="tile tile-big tile-4" data-page-type="r-page" data-page-name="random-r-page">
+          <figure>
+            <img src="images/blue.jpg" />
+            <figcaption class="tile-caption caption-left">Slide-out Caption from left</figcaption>
+          </figure>
+        </li>
       </div>
+
       <div class="col2 clearfix">
-        <div class="big organizer-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe015;"></span><p>Contacts</p></div>
-        <div class="big news-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe00f;"></span><p>News</p></div>
-        <div class="small calendar-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe00a;"></span></div>
-        <div class="small last paint-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe014;"></span></div>
-        <div class="big weather-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe012;"></span><p> Weather</p></div>
+        <li class="tile tile-big tile-5" data-page-type="r-page" data-page-name="random-r-page">
+          <div><p><span class="icon-cloudy"></span>Weather</p></div>
+        </li>
+        <li class="tile tile-big tile-6 slideTextLeft" data-page-type="r-page" data-page-name="random-r-page">
+          <div><p><span class="icon-skype"></span>Skype</p></div>
+          <div><p>Make a Call</p></div>
+        </li>
+        <!--Tiles with a 3D effect should have the following structure:
+            1) a container inside the tile with class of .faces
+            2) 2 figure elements, one with class .front and the other with class .back-->
+        <li class="tile tile-small tile-7 rotate3d rotate3dX" data-page-type="r-page" data-page-name="random-r-page">
+          <div class="faces">
+            <div class="front"><span class="icon-picassa"></span></div>
+            <div class="back"><p>Launch Picassa</p></div>
+          </div>
+        </li>
+        <li class="tile tile-small last tile-8 rotate3d rotate3dY" data-page-type="r-page" data-page-name="random-r-page">
+          <div class="faces">
+            <div class="front"><span class="icon-instagram"></span></div>
+            <div class="back"><p>Launch Instagram</p></div>
+          </div>
+        </li>
       </div>
+
       <div class="col3 clearfix">      
-        <div class="big photos-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe001;"></span><p> Photos</p></div>
-        <div class="small alarm-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe009;"></span></div>
-        <div class="small last favorites-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe018;"></span></div>
-        <div class="big games-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe002;"></span><p>Games</p></div>
-        <div class="small git-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe010;"></span></div>
-        <div class="small last code-thumb" data-page="random-page"><span class="icon-font" aria-hidden="true" data-icon="&#xe011;"></span></div>
+        <li class="tile tile-2xbig tile-9" data-page-type="custom-page" data-page-name="random-r-page">
+          <figure>
+            <img src="images/summer.jpg" />
+            <figcaption class="tile-caption caption-bottom">Fixed Caption: Some Subtitle or Tile Description Goes Here with some kinda link or anything
+            </figure>
+        </li>
+        <li class="tile tile-big tile-10" data-page-type="s-page" data-page-name="custom-page">
+          <div><p>Windows-8-like Animations with CSS3 &amp; jQuery &copy; Sara Soueidan. Licensed under MIT.</p></div>
+        </li>
       </div>
-  </div>
+    </ul>
+  </div><!--end dashboard-->
+
 </div>
 <!--====================================end demo wrapper================================================-->
   <script src="js/jquery-1.8.2.min.js"></script>
-  <script src="js/modernizr-1.5.min.js"></script>
-  <script>
-    function showDashBoard(){
-      for(var i = 1; i <= 3; i++) {
-        $('.col'+i).each(function(){
-            $(this).addClass('fadeInForward-'+i).removeClass('fadeOutback');
-        });
-      }
-    }
+  <script src="js/scripts.js"></script>
 
-    function fadeDashBoard(){
-      for(var i = 1; i <= 3; i++) {
-        $('.col'+i).addClass('fadeOutback').removeClass('fadeInForward-'+i);
-      }
-    }
-    
-   
-    $(".lock-thumb").click(function(){
-        fadeDashBoard();
-        $('.login-screen').addClass('slidePageInFromLeft').removeClass('slidePageBackLeft');
-    });
-    
-    $('#unlock-button').click(function(){
-          $('.login-screen').removeClass('slidePageInFromLeft').addClass('slidePageBackLeft');
-          showDashBoard();
-    });
-
-  $('.big, .small').each(function(){
-    var $this= $(this),
-        page = $this.data('page');
-    $this.on('click',function(){
-      $('.page.'+page).addClass('openpage');
-      fadeDashBoard();
-    })
-  });
-  $('.close-button').click(function(){
-    $(this).parent().addClass('slidePageLeft')
-          .one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-                $(this).removeClass('slidePageLeft').removeClass('openpage');
-              });
-      showDashBoard();
-  });
-  $('.view-demo-button').click(function(){
-    $(this).parent().addClass('slideDemoOverlayUp');
-      showDashBoard();
-  });
-
-  </script>
-  
 </body>
 </html>
