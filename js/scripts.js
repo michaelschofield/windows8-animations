@@ -5,11 +5,21 @@
             page = $this.data('page-name'),
             bgcolor = $this.css('background-color'),
             textColor = $this.css('color');
+            
+            //if the tile rotates, we'll use the colors of the front face
             if($this.hasClass('rotate3d')) {
               frontface = $this.find('.front');
               bgcolor = frontface.css('background-color');
               textColor = frontface.css('color');
             }
+
+            //if the tile has an image and a caption, we'll use the caption styles
+            if($this.hasClass('fig-tile')) {
+              caption = $this.find('figcaption');
+              bgcolor = caption.css('background-color');
+              textColor = caption.css('color');
+            }
+
         $this.on('click',function(){
           $('.'+page).css({'background-color': bgcolor, 'color': textColor});
         });

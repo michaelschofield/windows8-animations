@@ -503,9 +503,13 @@ header a {
   z-index: 10;
   text-align: center;
   font-size: 3em;
-  font-weight: 300
+  font-weight: 300;
 }
-
+/*default colors just in case you don't define these colors on the tiles*/
+.s-page, .r-page{
+  background-color: white;
+  color:black;
+}
 .page-title {
   margin-top: 1em;
   font-weight: 100;
@@ -649,11 +653,6 @@ header a {
   color: #455962
 }
 
-.tile-4 {
-  background-color: #455962;
-  color: white
-}
-
 .tile-5 {
   background-color: #FCC120;
   color: white
@@ -671,12 +670,7 @@ header a {
 
 .tile-7,
 .tile-8 {
-  background-color: transparent
-}
-
-.tile-9 {
-  color: white;
-  background-color: #56D9C9
+  background-color: transparent;
 }
 
 .tile-10 {
@@ -795,20 +789,22 @@ header a {
   -o-backface-visibility: hidden;
   backface-visibility: hidden
 }
-
-.faces .front {
+.faces .front{/*default*/
+  background-color: #455962;
+  color: #ddd;
+}
+.rotate3dX .front {
   background-color: #455962;
   color: #ddd
+}
+.rotate3dY .front {
+  background-color: #ddd;
+  color: #455962;
 }
 
 .faces .back {
   background-color: #455962;
   color: #ddd
-}
-
-.rotate3dY .front {
-  color: #455962;
-  background-color: #ddd
 }
 
 .front span {
