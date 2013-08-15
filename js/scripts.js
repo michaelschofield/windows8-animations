@@ -21,7 +21,8 @@
             }
 
         $this.on('click',function(){
-          $('.'+page).css({'background-color': bgcolor, 'color': textColor});
+          $('.'+page).css({'background-color': bgcolor, 'color': textColor})
+                     .find('.close-button').css({'background-color': textColor, 'color': bgcolor});
         });
     });
 
